@@ -1,0 +1,15 @@
+name: learn-github-actions
+on:
+  workflow_call:
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v4
+      - run: echo Hello world
+        name: display mssg
+      - run: ls -Alr
+        name: list of files
+
+
