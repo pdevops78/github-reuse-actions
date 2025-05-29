@@ -11,5 +11,7 @@ jobs:
         name: display mssg
       - run: ls -Alr
         name: list of files
+      - run: /opt/sonar-scanner-7.1.0.4889-linux-x64/bin/sonar-scanner -Dsonar.host.url=http://172.31.88.93:9000 -Dsonar.login=admin -Dsonar.password=admin123 -Dsonar.projectKey=expense-backend
+        name: code Review
 
 
