@@ -21,7 +21,7 @@ jobs:
         name: code build
       - run: echo OK
         name: code test
-      - run: /opt/sonar-scanner-7.1.0.4889-linux-x64/bin/sonar-scanner -Dsonar.host.url=http://172.31.88.93:9000 -Dsonar.login=${{inputs.sonar_login}} -Dsonar.password=${{inputs.sonar_password}} -Dsonar.projectKey=${{inputs.project_name}}
+      - run: /opt/sonar-scanner-7.1.0.4889-linux-x64/bin/sonar-scanner -Dsonar.host.url=http://172.31.91.23:9000 -Dsonar.login=${{inputs.sonar_login}} -Dsonar.password=${{inputs.sonar_password}} -Dsonar.projectKey=${{inputs.project_name}}
         name: code Review
 
 
