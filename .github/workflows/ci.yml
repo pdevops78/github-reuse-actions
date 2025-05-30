@@ -11,6 +11,12 @@ on:
       project_name:
         required: true
         type: string
+      npm_install:
+        required: true
+        type: boolena
+      node_version:
+        required: true
+        type: boolean
 jobs:
   job1:
     runs-on: [self-hosted]
@@ -18,10 +24,24 @@ jobs:
       - name: code checkout
         uses: actions/checkout@v4
       - run: echo OK
-        name: code build
+        name: Lint Code
       - run: echo OK
-        name: code test
+        name: unit test
+      - run: echo OK
+        name: integration test
+      - run: enable node js 20 version
+        name: dnf module enable nodejs:20
+        if: ${{ node_version }}
+      - run: Install nodejs
+        name: dnf install nodejs -y
+      - run: Install dependencies
+        if: ${{ npm_install }}
+        name: npm install
       - run: /opt/sonar-scanner-7.1.0.4889-linux-x64/bin/sonar-scanner -Dsonar.host.url=http://172.31.91.23:9000 -Dsonar.login=${{inputs.sonar_login}} -Dsonar.password=${{inputs.sonar_password}} -Dsonar.projectKey=${{inputs.project_name}}
         name: code Review
+      - run: env
+        name: env
+      - run: echo OK
+        name: code release
 
 
