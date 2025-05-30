@@ -37,7 +37,7 @@ jobs:
       - run: Install dependencies
         if: ${{ npm_install }}
         name: npm install
-      - run: /opt/sonar-scanner-7.1.0.4889-linux-x64/bin/sonar-scanner -Dsonar.host.url=http://172.31.91.23:9000 -Dsonar.login=${{inputs.sonar_login}} -Dsonar.password=${{inputs.sonar_password}} -Dsonar.projectKey=${{inputs.project_name}}
+      - run: /opt/sonar-scanner-7.1.0.4889-linux-x64/bin/sonar-scanner -Dsonar.host.url=http://172.31.85.161:9000 -Dsonar.login=${{inputs.sonar_login}} -Dsonar.password=${{inputs.sonar_password}} -Dsonar.projectKey=${{inputs.project_name}}
         name: code Review
       - run: env
         name: env
