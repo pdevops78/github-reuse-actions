@@ -37,7 +37,7 @@ jobs:
         name: code Review
       - run: env
         name: env
-      - run: echo "Tag pushed: ${{ github.ref }}"
+      - run: echo Tag pushed $github.ref
         name: code release
 #        if: ${{ env.GITHUB_REF=refs/tags/*}}}
 
