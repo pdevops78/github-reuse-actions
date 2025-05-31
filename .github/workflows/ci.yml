@@ -12,11 +12,8 @@ on:
         required: true
         type: string
       npm_install:
-        required: true
-        type: boolena
-      node_version:
-        required: true
         type: boolean
+
 jobs:
   job1:
     runs-on: [self-hosted]
