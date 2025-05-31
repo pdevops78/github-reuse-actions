@@ -37,8 +37,9 @@ jobs:
         name: code Review
       - run: env
         name: env
-      - run: echo OK
+      - run: echo "code release: ${{github.ref}}"
         name: code release
+
 
 
 
