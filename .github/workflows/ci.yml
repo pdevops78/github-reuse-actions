@@ -27,11 +27,12 @@ jobs:
       - run: echo OK
         name: integration test
 
-      - run: Install nodejs
-        name: dnf install nodejs -y
-      - run: Install dependencies
+      - run: dnf install nodejs -y
+        name: Install nodejs
+
+      - run: npm install
+        name: Install dependencies
         if: ${{ inputs.npm_install }}
-        name: npm install
       - run: /opt/sonar-scanner-7.1.0.4889-linux-x64/bin/sonar-scanner -Dsonar.host.url=http://172.31.33.218:9000 -Dsonar.login=${{inputs.sonar_login}} -Dsonar.password=${{inputs.sonar_password}} -Dsonar.projectKey=${{inputs.project_name}}
         name: code Review
       - run: env
