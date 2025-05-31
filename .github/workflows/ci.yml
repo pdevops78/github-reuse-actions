@@ -29,9 +29,7 @@ jobs:
         name: unit test
       - run: echo OK
         name: integration test
-      - run: enable node js 20 version
-        name: dnf module enable nodejs:20
-        if: ${{ node_version }}
+
       - run: Install nodejs
         name: dnf install nodejs -y
       - run: Install dependencies
