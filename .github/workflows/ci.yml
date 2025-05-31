@@ -27,7 +27,7 @@ jobs:
       - run: echo OK
         name: integration test
 
-      - run: dnf install nodejs -y
+      - run: sudo dnf install nodejs -y
         name: Install nodejs
 
       - run: npm install
