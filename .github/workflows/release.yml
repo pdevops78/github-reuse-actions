@@ -7,6 +7,8 @@ on:
         type: string
       npm_install:
         type: boolean
+      release_archive_files:
+        type: string
 
 jobs:
   job1:
@@ -23,8 +25,14 @@ jobs:
         if: ${{ inputs.npm_install }}
       - run: env
         name: env
+      - run: echo "$GITHUB_REF_NAME"
+        name: git hub reference name
+      - run: echo ${{ inputs.release_archive_files }}
       - run: echo "$GITHUB_REF"
         name: code release
+
+#      - run: curl -v --user admin:password --data-binary@artifactzip -X PUT"http://localhost:8080/artifactory/expense-backend/1.0.0.zip"
+#        name: upload artifactory
 
 
 
