@@ -236,3 +236,26 @@ history
 233  27/05/25 09:43:28 /opt/sonar-scanner-7.1.0.4889-linux-x64/bin/sonar-scanner -Dsonar.host.url=http://172.31.89.19:9000 -Dsonar.login=admin -Dsonar.password=admin123
 234  27/05/25 09:44:08 /opt/sonar-scanner-7.1.0.4889-linux-x64/bin/sonar-scanner -Dsonar.host.url=http://172.31.89.19:9000 -Dsonar.login=admin -Dsonar.password=admin123 -Dsonar.projectKey=expense-backend
 235  27/05/25 09:45:28 history
+
+
+
+open ssl issue:
+==============
+Check where is ssh
+
+\#which ssh
+
+/usr/local/bin/ssh
+Remove the current ssh package.
+
+sudo apt-get remove openssh-server openssh-client
+Remove ssh file under /usr/local/bin/ssh
+
+Reinstall ssh package as follows.
+
+sudo apt-get install openssh-server openssh-client
+Log out the current session and re-login again. SSH command is back to work and is under /usr/bin/ssh.
+
+\#which ssh
+
+/usr/bin/ssh
