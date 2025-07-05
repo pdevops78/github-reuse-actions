@@ -11,3 +11,5 @@ jobs:
         name: Lint Code
       - run: echo OK
         name: unit test
+      - run: ls -ltr
+        name: list all files
