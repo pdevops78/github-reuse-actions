@@ -1,42 +1,42 @@
-name: learn-github-actions
-on:
-  workflow_call:
-    inputs:
-      project_name:
-        required: true
-        type: string
-      npm_install:
-        type: boolean
-      release_archive_files:
-        type: string
-
-jobs:
-  job1:
-    runs-on: [self-hosted]
-    steps:
-      - name: code checkout
-        uses: actions/checkout@v4
-      - run: ls -l
-        name: Lint Code
-      - run: sudo dnf install nodejs -y
-        name: Install nodejs
-      - run: npm install
-        name: Install dependencies
-        if: ${{ inputs.npm_install }}
-      - run: env
-        name: env
-      - run: echo "$GITHUB_REF_NAME"
-        name: git hub reference name
-      - run: echo ${{ inputs.release_archive_files }}
-      - run: echo "$GITHUB_REF"
-        name: code release
-
-#      - run: curl -v --user admin:password --data-binary@artifactzip -X PUT"http://localhost:8080/artifactory/expense-backend/1.0.0.zip"
-#        name: upload artifactory
-
-
-
-
-
-
-
+#name: learn-github-actions
+#on:
+#  workflow_call:
+#    inputs:
+#      project_name:
+#        required: true
+#        type: string
+#      npm_install:
+#        type: boolean
+#      release_archive_files:
+#        type: string
+#
+#jobs:
+#  job1:
+#    runs-on: [self-hosted]
+#    steps:
+#      - name: code checkout
+#        uses: actions/checkout@v4
+#      - run: ls -l
+#        name: Lint Code
+#      - run: sudo dnf install nodejs -y
+#        name: Install nodejs
+#      - run: npm install
+#        name: Install dependencies
+#        if: ${{ inputs.npm_install }}
+#      - run: env
+#        name: env
+#      - run: echo "$GITHUB_REF_NAME"
+#        name: git hub reference name
+#      - run: echo ${{ inputs.release_archive_files }}
+#      - run: echo "$GITHUB_REF"
+#        name: code release
+#
+##      - run: curl -v --user admin:password --data-binary@artifactzip -X PUT"http://localhost:8080/artifactory/expense-backend/1.0.0.zip"
+##        name: upload artifactory
+#
+#
+#
+#
+#
+#
+#
