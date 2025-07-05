@@ -248,14 +248,16 @@ Check where is ssh
 /usr/local/bin/ssh
 Remove the current ssh package.
 
-sudo apt-get remove openssh-server openssh-client
+sudo dnf remove openssh-server openssh-client
 Remove ssh file under /usr/local/bin/ssh
 
 Reinstall ssh package as follows.
-
-sudo apt-get install openssh-server openssh-client
+sudo yum update
+sudo dnf install openssh-server openssh-client
 Log out the current session and re-login again. SSH command is back to work and is under /usr/bin/ssh.
 
 \#which ssh
 
 /usr/bin/ssh
+
+
