@@ -1,6 +1,5 @@
 name: learn-github-actions
-on:
-  workflow_call:
+on: [workflow_call]
 jobs:
   job1:
     runs-on: [self-hosted]
