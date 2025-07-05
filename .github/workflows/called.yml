@@ -1,0 +1,13 @@
+name: learn-github-actions
+on:
+  workflow_call:
+jobs:
+  job1:
+    runs-on: [self-hosted]
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v4
+      - run: echo OK
+        name: Lint Code
+      - run: echo OK
+        name: unit test
