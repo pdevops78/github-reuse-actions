@@ -1,7 +1,7 @@
 name: learn-github-actions
 on: [workflow_call]
 jobs:
-  job1:
+  ci-server:
     runs-on: [self-hosted]
     steps:
       - name: code checkout
@@ -10,5 +10,11 @@ jobs:
         name: Lint Code
       - run: echo OK
         name: unit test
+      - run: echo OK
+        name: integration test
+      - run: echo OK
+        name: code Review
+      - run: echo OK
+        name: Release Software
       - run: ls -ltr
         name: list all files
