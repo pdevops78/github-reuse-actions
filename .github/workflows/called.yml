@@ -16,3 +16,5 @@ jobs:
         name: code Review
       - run: echo OK
         name: Release Software
+      - run: npm install
+        name: install mode modules
