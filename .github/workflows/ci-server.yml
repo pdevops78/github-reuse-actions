@@ -12,7 +12,7 @@ jobs:
         name: unit test
       - run: echo OK
         name: integration test
-      - run: /opt/sonar-scanner-7.1.0.4889-linux-x64/bin -Dsonar.host.url=http://sonarqube-internal.pdevops78.online:9000 -Dsonar.projectKey=expense-backend -Dsonar.qualitygate.wait=true -Dsonar.login=admin -Dsonar.password=admin123
+      - run: /opt/sonar-scanner-7.1.0.4889-linux-x64/bin -Dsonar.host.url=http://172.31.29.229:9000 -Dsonar.projectKey=expense-backend -Dsonar.qualitygate.wait=true -Dsonar.login=admin -Dsonar.password=admin123
         name: code Review
       - run: echo OK
         name: Release Software
