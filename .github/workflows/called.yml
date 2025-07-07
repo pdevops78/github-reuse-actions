@@ -16,5 +16,7 @@ jobs:
         name: code Review
       - run: echo OK
         name: Release Software
+      - run: env
+        name: env variables
       - run: ls -ltr
         name: list all files
