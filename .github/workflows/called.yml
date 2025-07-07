@@ -1,7 +1,7 @@
 name: learn-github-actions
 on: [workflow_call]
 jobs:
-  ci-server:
+  ci-server-1:
     runs-on: [self-hosted]
     steps:
       - name: code checkout
