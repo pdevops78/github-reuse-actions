@@ -1,5 +1,5 @@
 name: learn-github-actions
-on: [workflow_call]
+on: [push]
 jobs:
   ci-server-1:
     runs-on: [self-hosted]
