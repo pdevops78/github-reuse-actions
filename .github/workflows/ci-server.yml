@@ -30,7 +30,7 @@ jobs:
         name: unit test
       - run: echo OK
         name: integration test
-      - run: /opt/sonar-scanner-7.1.0.4889-linux-x64/bin/sonar-scanner -Dsonar.host.url=http://sonarqube.pdevops78.online:9000 -Dsonar.projectKey=${{inputs.project_name }} -Dsonar.qualitygate.wait=true -Dsonar.login=${{ steps.vault-secrets.outputs.sonarqube_user }} -Dsonar.password=${{ steps.vault-secrets.outputs.sonarqube_password }}
+      - run: /opt/sonar-scanner-7.1.0.4889-linux-x64/bin/sonar-scanner -Dsonar.host.url=http://3.88.166.118:9000 -Dsonar.projectKey=${{inputs.project_name }} -Dsonar.qualitygate.wait=true -Dsonar.login=${{ steps.vault-secrets.outputs.sonarqube_user }} -Dsonar.password=${{ steps.vault-secrets.outputs.sonarqube_password }}
         name: code Review
       - run: echo OK
         name: Release Software
