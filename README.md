@@ -261,3 +261,17 @@ Log out the current session and re-login again. SSH command is back to work and 
 /usr/bin/ssh
 
 
+how do we get secrets from github actions?
+- run: echo OK
+  name: Release Software
+  if: ${{ startswith (github.ref == 'refs/tags/*') }}
+
+test.yml:
+---------
+jobs:
+ job1:
+- run: env
+  name: 
+
+
+
