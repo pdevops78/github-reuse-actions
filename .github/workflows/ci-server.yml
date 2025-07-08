@@ -5,6 +5,7 @@ on:
       project_name:
         required: true
         type: string
+    secrets:
       vault_token:
         required: true
         type: string
