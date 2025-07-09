@@ -23,8 +23,10 @@ jobs:
         name: code Review
       - run: env
         name: env
-      - run: echo OK
+
+      - run: echo ${{GITHUB_REF}}
         name: Release Software
+        if: ${{ startswith (github.ref == 'refs/tags/*') }}
 
 
 
