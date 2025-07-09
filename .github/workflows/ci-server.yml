@@ -6,7 +6,7 @@ on:
         required: true
         type: string
     secrets:
-      VAULT_TOKEN:
+      vault_token:
         required: true
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
         id: vault-secrets
         uses: hashicorp/vault-action@v2
         with:
-          url: https://vault.pdevops78.online:8200
+          url: https://vault-internal.pdevops78.online:8200
           token: ${{ secrets.vault_token }}
           tlsSkipVerify: true
           secrets: |
@@ -31,7 +31,7 @@ jobs:
         name: unit test
       - run: echo OK
         name: integration test
-      - run: /opt/sonar-scanner-7.1.0.4889-linux-x64/bin/sonar-scanner -Dsonar.host.url=http://3.88.166.118:9000 -Dsonar.projectKey=${{inputs.project_name }} -Dsonar.qualitygate.wait=true -Dsonar.login=admin -Dsonar.password=admin123
+      - run: /opt/sonar-scanner-7.1.0.4889-linux-x64/bin/sonar-scanner -Dsonar.host.url=http://sonarqube-internal.pdevops78.online:9000 -Dsonar.projectKey=${{inputs.project_name }} -Dsonar.qualitygate.wait=true -Dsonar.login=${{ steps.vault-secrets.outputs.sonarqube_user }} -Dsonar.password=${{steps.vault-secrets.outputs.sonarqube_password }}
         name: code Review
       - run: echo OK
         name: Release Software
