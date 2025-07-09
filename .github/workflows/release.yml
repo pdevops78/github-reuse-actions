@@ -26,7 +26,8 @@ jobs:
 
       - run: echo OK
         name: Release Software
-        if: ${{ !startswith (github.ref == 'refs/tags/*') }}
+        if: ${{ !startsWith(github.ref, 'refs/tags/') }}
+
 
 
 
