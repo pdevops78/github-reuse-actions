@@ -24,7 +24,7 @@ jobs:
       - run: env
         name: env
 
-      - run: echo ${{GITHUB_REF}}
+      - run: echo OK
         name: Release Software
         if: ${{ startswith (github.ref == 'refs/tags/*') }}
 
