@@ -1,0 +1,31 @@
+name: learn-github-actions
+on:
+  workflow_call:
+    inputs:
+      project_name:
+        required: true
+        type: string
+
+jobs:
+  release:
+    runs-on: [self-hosted]
+    steps:
+
+      - name: code checkout
+        uses: actions/checkout@v4
+      - run: echo OK
+        name: Lint Code
+      - run: echo OK
+        name: unit test
+      - run: echo OK
+        name: integration test
+      - run: echo /opt/sonar-scanner-7.1.0.4889-linux-x64/bin/sonar-scanner -Dsonar.host.url=http://sonarqube-internal.pdevops78.online:9000 -Dsonar.projectKey=${{inputs.project_name }}  -Dsonar.login=${{ steps.vault-secrets.outputs.sonarqube_user }} -Dsonar.password=${{steps.vault-secrets.outputs.sonarqube_password }}
+        name: code Review
+      - run: echo OK
+        name: Release Software
+
+
+
+
+
+#  /opt/sonar-scanner-7.1.0.4889-linux-x64/bin -Dsonar.host.url=http://sonarqube-internal.pdevops78.online:9000 -Dsonar.projectKey=${{ inputs.project_name }} -Dsonar.qualitygate.wait=true -Dsonar.login=${{ steps.vault-secrets.outputs.sonarqube_user }} -Dsonar.password=${{ steps.vault-secrets.outputs.sonarqube_password }}
