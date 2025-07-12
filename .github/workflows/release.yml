@@ -5,6 +5,8 @@ on:
       project_name:
         required: true
         type: string
+      backend_release_archive:
+        required: true
 
 jobs:
   release:
