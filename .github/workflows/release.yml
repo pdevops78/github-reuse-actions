@@ -33,7 +33,7 @@ jobs:
       - run: env
         name: env
 
-      - run: echo /opt/sonar-scanner-7.1.0.4889-linux-x64/bin/sonar-scanner -Dsonar.host.url=http://sonarqube-internal.pdevops78.online:9000 -Dsonar.projectKey=${{inputs.project_name }}  -Dsonar.login=${{ steps.vault-secrets.outputs.artifactory_user }} -Dsonar.password=${{steps.vault-secrets.outputs.artifactory_password }}
+      - run: echo //artifactory-oss-7.21.5/app/bin/artifactory.sh -Dsonar.host.url=http://http://3.94.149.160:8082/-Dsonar.projectKey=${{inputs.project_name }}  -Dsonar.login=${{ steps.vault-secrets.outputs.artifactory_user }} -Dsonar.password=${{steps.vault-secrets.outputs.artifactory_password }}
         name: Release Software
 #        if: ${{ !startsWith(github.ref, 'refs/tags/') }}
 
