@@ -36,7 +36,7 @@ jobs:
       - run: env
         name: run env
 
-      - run : ${{github.ref.name}}>VERSION
+      - run : echo ${{github.ref.name}} >VERSION
         name: create version
       - name: zip files
         uses: vimtor/action-zip@v1.2
