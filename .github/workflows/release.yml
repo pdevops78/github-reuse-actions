@@ -7,6 +7,7 @@ on:
         type: string
       backend_release_archive:
         required: true
+        type: string
 
 jobs:
   release:
