@@ -273,5 +273,15 @@ jobs:
 - run: env
   name: 
 
+------------
+* first zip all the files 
+* redirect github ref into version
+* then upload zip file to artifactory
+* steps:
+  - uses: vimtor/action-zip@v1.2
+  with:
+  files: ${{ inputs.release_files }}
+  dest: result.zip
+
 
 
