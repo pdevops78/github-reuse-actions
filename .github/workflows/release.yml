@@ -39,10 +39,7 @@ jobs:
       - run : echo ${{github.ref.name}} >VERSION
         name: create version
       - name: zip files
-        uses: vimtor/action-zip@v1.2
-        with:
-          files: ${{ inputs.release_archive }}
-          dest:  result.zip
+        run: zip -r result.zip ${{ input.release_archive }}
 
       - run: curl -f -v --user ${{ steps.vault-secrets.outputs.artifactory_user }}:${{ steps.vault-secrets.outputs.artifactory_password }} --data-binary @result.zip -X PUT "http://13.222.138.152:8081/artifactory/${{ inputs.project_name }}/${GITHUB_REF_NAME}.zip"
         name: Release Software
