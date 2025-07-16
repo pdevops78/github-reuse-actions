@@ -285,3 +285,57 @@ jobs:
 
 
 
+update hashicorp vault secrets through github actions:
+========================================================
+1. first to read vaiult credentials
+   curl -s -k --request GET --header "X-Vault-Token:hvs.T8WnPWmYmGZkPYlGAHXVmebk" \
+   https://vault-internal.pdevops78.online:8200/v1/common/data/expense-frontend | jq .data.data | sed -i '/app_version/ c\  "app_version": 1.0.1' filename.json
+
+
+curl --request GET --header "X-Vault-Token: hvs.T8WnPWmYmGZkPYlGAHXVmebk" \
+https://vault-internal.pdevops78.online:8200/v1/secret/data/expense-frontend | jq
+
+here -k is used to bypass ssl certificate
+
+
+2. add environment variables in gocd pipeline
+environment_variables:
+App_VERSION: ""
+
+3. trigger a pipeline through gocd:
+===================================
+curl 'https://ci.example.com/go/api/pipelines/pipeline1/schedule' \
+-u 'username:password' \
+-H 'Accept: application/vnd.go.cd.v1+json' \
+-H 'Content-Type: application/json' \
+-X POST \
+-d '{
+"environment_variables": [
+{
+"name": "APP_VERSION",
+"secure": false,
+"value": "1.0.0"
+}
+],
+"update_materials_before_scheduling": true
+}' | sed -e "s/app_version/${GITHUB_REF_NAME}/" | jq > /tmp/1 (or data.json same line)
+
+
+4. how do we know which version we are triggering the pipeline
+===============================================================
+label_template: "${env:APP_VERSION}"
+
+
+
+Trigger a pipeline:
+===================
+Trigger a pipeline remotely (from a script) and pass custom environment variables like APP_VERSION, DEPLOY_ENV
+1. Create JSON Payload with Environment Variables
+   {
+   "environment_variables": {
+   "APP_VERSION": "1.0.1",
+   "DEPLOY_ENV": "staging"
+   }
+   }
+2. Trigger the Pipeline Using curl
+      curl -X POST "https://your-gocd-server.com/go/api/pipelines/<pipeline-name>/schedule"  -H "Accept: application/vnd.go.cd.v1+json" -H "Content-Type: application/json" -d @data.json
