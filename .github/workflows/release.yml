@@ -47,6 +47,14 @@ jobs:
       - run: curl -f -v --user ${{ steps.vault-secrets.outputs.artifactory_user }}:${{ steps.vault-secrets.outputs.artifactory_password }} --data-binary @result.zip -X PUT "http://artifactory-internal.pdevops78.online:8081/artifactory/${{ inputs.project_name }}/${GITHUB_REF_NAME}.zip"
         name: Release Software
 
+      - run: |
+          echo "{
+              "environment_variables": {
+              "app_version": "1.0.1",
+              "DEPLOY_ENV": "dev"
+          }
+          }"
+
 
 
 
