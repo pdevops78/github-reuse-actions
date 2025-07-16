@@ -44,7 +44,7 @@ jobs:
       - name: zip files
         run: zip -r result.zip ${{ input.release_archive }}
 
-      - run: echo curl -f -v --user ${{ steps.vault-secrets.outputs.artifactory_user }}:${{ steps.vault-secrets.outputs.artifactory_password }} --data-binary @result.zip -X PUT "http://13.222.138.152:8081/artifactory/${{ inputs.project_name }}/${GITHUB_REF_NAME}.zip"
+      - run: curl -f -v --user ${{ steps.vault-secrets.outputs.artifactory_user }}:${{ steps.vault-secrets.outputs.artifactory_password }} --data-binary @result.zip -X PUT "http://13.222.138.152:8081/artifactory/${{ inputs.project_name }}/${GITHUB_REF_NAME}.zip"
         name: Release Software
 #        if: ${{ !startsWith(github.ref, 'refs/tags/') }}
       - run: |
