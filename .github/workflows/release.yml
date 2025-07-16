@@ -8,6 +8,9 @@ on:
       release_archive:
         required: true
         type: string
+    secrets:
+      vault_token:
+        required: true
 
 jobs:
   release:
@@ -41,11 +44,11 @@ jobs:
       - name: zip files
         run: zip -r result.zip ${{ input.release_archive }}
 
-      - run: curl -f -v --user ${{ steps.vault-secrets.outputs.artifactory_user }}:${{ steps.vault-secrets.outputs.artifactory_password }} --data-binary @result.zip -X PUT "http://13.222.138.152:8081/artifactory/${{ inputs.project_name }}/${GITHUB_REF_NAME}.zip"
+      - run: echo curl -f -v --user ${{ steps.vault-secrets.outputs.artifactory_user }}:${{ steps.vault-secrets.outputs.artifactory_password }} --data-binary @result.zip -X PUT "http://13.222.138.152:8081/artifactory/${{ inputs.project_name }}/${GITHUB_REF_NAME}.zip"
         name: Release Software
 #        if: ${{ !startsWith(github.ref, 'refs/tags/') }}
       - run: |
-          curl -s -k --request GET --header "X-Vault-Token:hvs.T8WnPWmYmGZkPYlGAHXVmebk" \
+          echo curl -s -k --request GET --header "X-Vault-Token:${{ secrets.vault_token }}" \
     https://vault-internal.pdevops78.online:8200/v1/common/data/expense-frontend | jq .data.data | sed -i '/app_version/ c\  "app_version": 1.0.1' | jq
 
 
