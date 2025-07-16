@@ -339,3 +339,5 @@ Trigger a pipeline remotely (from a script) and pass custom environment variable
    }
 2. Trigger the Pipeline Using curl
       curl -X POST "https://your-gocd-server.com/go/api/pipelines/<pipeline-name>/schedule"  -H "Accept: application/vnd.go.cd.v1+json" -H "Content-Type: application/json" -d @data.json
+
+http://52.201.245.87:8153/go/pipeline/activity/artifactory

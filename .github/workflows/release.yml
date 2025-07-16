@@ -48,12 +48,17 @@ jobs:
         name: Release Software
 
       - run: |
-          echo "{
-              "environment_variables": {
-              "app_version": "1.0.1",
-              "DEPLOY_ENV": "dev"
-          }
-          }"
+          echo '{
+          "environment_variables": [
+            {
+              "name": "APP_VERSION",
+              "secure": false,
+              "value": "app_version"
+            }
+          ],
+          "update_materials_before_scheduling": true
+          }' | sed -e "s/app_version/${GITHUB_REF_NAME}/" | jq >data.json
+          curl 'http://52.201.245.87:8153/go/api/pipelines/${{ inputs.project_name }}/schedule' -H 'Accept: application/vnd.go.cd.v1+json' -H 'Content-Type: application/json' -X POST -d "@data.json"
 
 
 
