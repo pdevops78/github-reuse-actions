@@ -341,3 +341,13 @@ Trigger a pipeline remotely (from a script) and pass custom environment variable
       curl -X POST "https://your-gocd-server.com/go/api/pipelines/<pipeline-name>/schedule"  -H "Accept: application/vnd.go.cd.v1+json" -H "Content-Type: application/json" -d @data.json
 
 http://52.201.245.87:8153/go/pipeline/activity/artifactory
+
+Load Test:
+----------
+
+to monitor Load test data:
+--------------------------
+1. install prometheus
+2. install grafana
+3. cd /etc/grafana/provisioning/datasources
+4. cat sample.yaml
